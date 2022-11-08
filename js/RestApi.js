@@ -37,5 +37,4 @@ class RestApi {
             method: 'DELETE',
         }).then((res) => res.json());
     }
-
 }

@@ -38,5 +38,4 @@ class TodosController {
             this.#listView.renderList(this.#collection.list);
         });
     }
-
 }
