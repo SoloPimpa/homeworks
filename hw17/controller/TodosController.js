@@ -11,7 +11,7 @@ class TodosController {
         });
         $container.append(this.#listView.$el);
 
-        this.#collection = new TodosCollection();
+        this.#collection = new NotesCollection();
         this.#collection.fetchList().then(() => {
             this.#listView.renderList(this.#collection.list);
         });
