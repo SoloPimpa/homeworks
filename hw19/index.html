@@ -8,53 +8,25 @@
     <link rel="stylesheet" href="css/style.css" />
     <link href="css/fs-gal.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/skeleton.css">
-    
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-
     <script src="js/fs-gal.js" defer></script>
     <script src="js/script.js" defer></script>
-
     <title>Gallery</title>
-
 </head>
 <body>
 <div class="container">
     <h1>Gallery</h1>
     <div class="gallery"></div>
 </div>
-
 <h1></h1>
 <div class="fs-gal-view">
-    <img
-            class="fs-gal-prev fs-gal-nav"
-            src="https://img.icons8.com/ios/50/null/left-squared--v1.png"
-            alt="Previous picture"
-            title="Previous picture"
-    />
-    <img
-            class="fs-gal-next fs-gal-nav"
-            src="https://img.icons8.com/ios/50/null/right-squared--v1.png"
-            alt="Next picture"
-            title="Next picture"
-    />
-    <img
-            class="fs-gal-close"
-    src="https://img.icons8.com/ios/50/null/close-window.png"
-            alt="Close gallery"
-            title="Close gallery"
-    />
+    <img class="fs-gal-prev fs-gal-nav" src="https://img.icons8.com/ios/50/null/left-squared--v1.png" alt="Previous picture" title="Previous picture"/>
+    <img class="fs-gal-next fs-gal-nav" src="https://img.icons8.com/ios/50/null/right-squared--v1.png" alt="Next picture" title="Next picture"/>
+    <img class="fs-gal-close" src="https://img.icons8.com/ios/50/null/close-window.png" alt="Close gallery" title="Close gallery"/>
     <img class="fs-gal-main" src="" alt="" />
 </div>
 <script type="text/template" id="gallery-item-template">
-
-    <img class="fs-gal"
-
-         alt="{{titleImage}}"
-         src="{{thumbUrlImage}}"
-
-         data-url="{{urlImage}}"
-         data-id="{{id}}">
+    <img class="fs-gal" alt="{{titleImage}}" src="{{thumbnailUrlImage}}" data-url="{{urlImage}}" data-id="{{id}}">
 </script>
-
 </body>
 </html>
