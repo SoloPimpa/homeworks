@@ -1,0 +1,11 @@
+{
+  "name": "hw20",
+  "version": "0.0.1",
+  "description": "My calc project\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[C node project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Daria (Pipa)",
+  "license": "MIT"
+}
