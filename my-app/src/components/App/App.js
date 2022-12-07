@@ -43,7 +43,7 @@ class App extends Component {
         console.log(this.state);
         return (
             <div className="container">
-                <input type="number" value={this.state.num1} onChange={this.onFirstInputChange}/>
+                <input type="number" value={this.state.num1} onChange={this.onFirstInputChange}/>+
                 {/*<select>*/}
                 {/*    <option value="add">+</option>*/}
                 {/*    <option value="sub">-</option>*/}
