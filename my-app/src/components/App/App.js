@@ -12,16 +12,11 @@ class App extends Component {
     };
 
 
-    onFirstInputChange = (e) => {
+    onChange = (e) => {
         this.setState({
-            num1: +e.target.value
+            [e.target.name]: e.target.type === 'number' ? +e.target.value :e.target.value,
 
-        })
-    };
-    onSecondInputChange = (e) => {
-        this.setState({
-            num2:+e.target.value
-        })
+        });
     };
 
 
@@ -35,12 +30,7 @@ class App extends Component {
         }
         this.setState({
             result: result,
-            //ксли одноименное, то можно прото написать: result,
-        })
-    };
-    onOperatorChange=(e)=>{
-        this.setState({
-           operation:e.target.value,
+            //if одноименное, то можно просто написать: result,
         })
     };
 
@@ -48,14 +38,14 @@ class App extends Component {
         console.log(this.state);
         return (
             <div className="container">
-                <input type="number" value={this.state.num1} onChange={this.onFirstInputChange}/>
-                <select value={this.state.operation} onChange={this.onOperatorChange}>
+                <input name="num1" type="number" value={this.state.num1} onChange={this.onChange}/>
+                <select name="operation" value={this.state.operation} onChange={this.onChange}>
                     <option value="+">+</option>
                     <option value="-">-</option>
                     <option value="/">/</option>
                     <option value="*">*</option>
                 </select>
-                <input type="number" value={this.state.num2} onChange={this.onSecondInputChange}/>
+                <input name="num2" type="number" value={this.state.num2} onChange={this.onChange}/>
                 <button onClick={this.calculate}>Calculate</button>
                 <div>Result: {this.state.result}</div>
             </div>
