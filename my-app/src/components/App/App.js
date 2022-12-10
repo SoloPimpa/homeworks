@@ -1,57 +1,50 @@
 import './App.css';
 
-import react, {Component} from 'react';
+import {Component} from 'react';
+import Form from "../Form/Form";
+import List from "../List/List";
 
 
 class App extends Component {
     state = {
-        result: 0,
+        todos: [
+            {id:1, title:'Item1', isDone:false},
+            {id:2, title:'Item2', isDone:true},
+            {id:3, title:'Item3', isDone:false},
+        ],
     };
 
-    onFormSubmit = (e) => {
-        e.preventDefault();
-        this.calculate(e.target.elements.num1.value, e.target.elements.num2.value, e.target.elements.operation.value
-        );
-    };
-
-    calculate(a, b, operator) {
-        let result = 0;
-        switch (operator) {
-            case '+':
-                result = a + b;
-                break;
-            case '-':
-                result = a - b;
-                break;
-            case '/':
-                result = a / b;
-                break;
-            case '*':
-                result = a * b;
-                break;
-        }
+    toggleTodo =(id)=>{
         this.setState({
-            result: result,
-            //if одноименное, то можно просто написать: result,
+            todos: this.state.todos.map((item) => item.id !==id ? item : {
+                ...item,
+                isDone: !item.isDone,
+            })
+        })
+    }
+
+    deleteTodo =(id)=>{
+        this.setState({
+            todos: this.state.todos.filter((item) => item.id !==id)
+        })
+    };
+
+    createTodo=(newTodo)=>{
+        this.setState({
+            todos:[...this.state.todos, {
+                ...newTodo,
+                id: Date.now(),
+                isDone: false,
+            }]
         })
     };
 
     render() {
         return (
-            <div className="container">
-                <form onSubmit={this.onFormSubmit}>
-                    <input name="num1" type="number"/>
-                    <select name="operation">
-                        <option value="+">+</option>
-                        <option value="-">-</option>
-                        <option value="/">/</option>
-                        <option value="*">*</option>
-                    </select>
-                    <input name="num2" type="number"/>
-                    <button>Calculate</button>
-                </form>
-                <div>Result: {this.state.result}</div>
-            </div>
+            <>
+                <List todos={this.state.todos} onToggle={this.toggleTodo} onDelete={this.deleteTodo}/>
+                <Form onSave={this.createTodo}/>
+            </>
         );
     }
 }
