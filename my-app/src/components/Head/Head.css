@@ -1,0 +1,12 @@
+ul{
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+    max-width: 560px;
+    align-items: center;
+    border: 1px solid black;
+    margin-left: 5px;
+}
+button{
+    cursor: pointer;
+}

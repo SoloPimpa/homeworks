@@ -1,22 +1,19 @@
-import './ListItem.css';
 import React, {Component} from 'react';
 
 class ListItem extends Component {
-    onItemClick = () => {
-        this.props.onToggle(this.props.todo.id);
-    };
-
     onDeleteClick = (e) => {
         e.stopPropagation();
-        this.props.onDelete(this.props.todo.id);
+        this.props.onDelete(this.props.contacts.id);
     }
 
     render() {
         return (
-            <li className={'item ' + (this.props.todo.isDone ? 'done' : '')}
-                onClick={this.onItemClick}>{this.props.todo.title}
+            <ul>
+                <li>{this.props.contacts.name}</li>
+                <li>{this.props.contacts.surname}</li>
+                <li>{this.props.contacts.phone}</li>
                 <button onClick={this.onDeleteClick}>Delete</button>
-            </li>
+            </ul>
         )
     };
 }

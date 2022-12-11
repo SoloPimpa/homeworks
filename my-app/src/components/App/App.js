@@ -1,40 +1,31 @@
 import './App.css';
 
 import {Component} from 'react';
-import Form from "../Form/Form";
+import FormContact from "../FormContact/FormContact";
 import List from "../List/List";
+import Head from "../Head/Head";
 
 
 class App extends Component {
     state = {
-        todos: [
-            {id:1, title:'Item1', isDone:false},
-            {id:2, title:'Item2', isDone:true},
-            {id:3, title:'Item3', isDone:false},
+        contacts: [
+            {id:1, name:'Bob', surname:'Bi', phone:'+380 01 00 000'},
+            {id:2, name:'Pip', surname:'Pepsi', phone:'+380 02 00 000'},
+            {id:3, name:'Mimi', surname:'Milk', phone:'+380 03 00 000'},
         ],
     };
 
-    toggleTodo =(id)=>{
+    deleteContact =(id)=>{
         this.setState({
-            todos: this.state.todos.map((item) => item.id !==id ? item : {
-                ...item,
-                isDone: !item.isDone,
-            })
-        })
-    }
-
-    deleteTodo =(id)=>{
-        this.setState({
-            todos: this.state.todos.filter((item) => item.id !==id)
+            contacts: this.state.contacts.filter((item) => item.id !==id)
         })
     };
 
-    createTodo=(newTodo)=>{
+    createContact=(newContact)=>{
         this.setState({
-            todos:[...this.state.todos, {
-                ...newTodo,
+            contacts:[...this.state.contacts, {
+                ...newContact,
                 id: Date.now(),
-                isDone: false,
             }]
         })
     };
@@ -42,9 +33,12 @@ class App extends Component {
     render() {
         return (
             <>
-                <List todos={this.state.todos} onToggle={this.toggleTodo} onDelete={this.deleteTodo}/>
-                <Form onSave={this.createTodo}/>
-            </>
+                <div>
+                <Head/>
+                <List contacts={this.state.contacts} onDelete={this.deleteContact}/>
+                <FormContact onSave={this.createContact}/>
+                </div>
+                </>
         );
     }
 }
