@@ -1,0 +1,12 @@
+input{
+    margin: 5px;
+    height: 20px;
+}
+button{
+    height:25px;
+}
+.error{
+    background-color: black;
+    color: red;
+    font-size: 12px;
+}

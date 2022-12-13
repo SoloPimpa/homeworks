@@ -1,47 +1,57 @@
 import './App.css';
 
 import {Component} from 'react';
-import FormContact from "../FormContact/FormContact";
+import Form from "../Form/Form";
 import List from "../List/List";
-import Head from "../Head/Head";
+import {createTodo, deleteTodo, getTodo, toggleTodo} from "../../services/todoService";
 
 
 class App extends Component {
     state = {
-        contacts: [
-            {id:1, name:'Bob', surname:'Bi', phone:'+380 01 00 000'},
-            {id:2, name:'Pip', surname:'Pepsi', phone:'+380 02 00 000'},
-            {id:3, name:'Mimi', surname:'Milk', phone:'+380 03 00 000'},
-        ],
+        todos: [],
     };
 
-    deleteContact =(id)=>{
-        this.setState({
-            contacts: this.state.contacts.filter((item) => item.id !==id)
+    toggleTodo =(id)=>{
+        toggleTodo(id).then(()=>{
+            this.setState({
+                todos: this.state.todos.map((item) => item.id !==id ? item : {
+                    ...item,
+                    isDone: !item.isDone,
+                })
+            })
+        })
+    }
+
+    deleteTodo =(id)=>{
+        deleteTodo(id).then(()=>{
+            this.setState({
+                todos: this.state.todos.filter((item) => item.id !==id)
+            })
         })
     };
 
-    createContact=(newContact)=>{
-        this.setState({
-            contacts:[...this.state.contacts, {
-                ...newContact,
-                id: Date.now(),
-            }]
+    createTodo=(newTodo)=>{
+        createTodo(newTodo).then((data)=>{
+            this.setState({
+                todos:[...this.state.todos, data],
+            })
         })
     };
 
     render() {
         return (
             <>
-                <div>
-                <Head/>
-                <List contacts={this.state.contacts} onDelete={this.deleteContact}/>
-                <FormContact onSave={this.createContact}/>
-                </div>
-                </>
+                <List todos={this.state.todos} onToggle={this.toggleTodo} onDelete={this.deleteTodo}/>
+                <Form onSave={this.createTodo}/>
+            </>
         );
+    }
+
+    componentDidMount() {
+        getTodo().then(data => this.setState({
+            todos:data
+        }))
     }
 }
 
 export default App;
-
