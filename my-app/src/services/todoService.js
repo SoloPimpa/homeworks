@@ -19,9 +19,11 @@ export function createTodo(newTodo){
 }
 
 export function toggleTodo(id){
+    const isDone ={isDone:true}
+
     return fetch(TODO_URL + id, {
         method: 'PUT',
-        body: JSON.stringify({id}),
+        body: JSON.stringify(isDone),
         headers:  {
             'Content-Type': 'application/json',
         },
