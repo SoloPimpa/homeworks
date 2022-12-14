@@ -14,8 +14,11 @@ class ListItem extends Component {
     render() {
         return (
             <li className={'item ' + (this.props.todo.isDone ? 'done' : '')}
-                onClick={this.onItemClick}>{this.props.todo.title}
+                onClick={this.onItemClick}>
+                <div>
+                {this.props.todo.title}
                 <button onClick={this.onDeleteClick}>Delete</button>
+                </div>
             </li>
         )
     };

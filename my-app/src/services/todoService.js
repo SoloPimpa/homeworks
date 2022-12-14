@@ -21,9 +21,9 @@ export function createTodo(newTodo){
 export function toggleTodo(id){
     return fetch(TODO_URL + id, {
         method: 'PUT',
-        // body: JSON.stringify(id),
-        // headers:  {
-        //     'Content-Type': 'application/json',
-        // },
+        body: JSON.stringify({id}),
+        headers:  {
+            'Content-Type': 'application/json',
+        },
     }).then(res => res.json());
 }

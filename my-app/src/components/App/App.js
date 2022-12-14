@@ -30,7 +30,7 @@ class App extends Component {
         })
     };
 
-    createTodo=(newTodo)=>{
+    createTodos=(newTodo)=>{
         createTodo(newTodo).then((data)=>{
             this.setState({
                 todos:[...this.state.todos, data],
@@ -42,7 +42,7 @@ class App extends Component {
         return (
             <>
                 <List todos={this.state.todos} onToggle={this.toggleTodo} onDelete={this.deleteTodo}/>
-                <Form onSave={this.createTodo}/>
+                <Form onSave={this.createTodos}/>
             </>
         );
     }

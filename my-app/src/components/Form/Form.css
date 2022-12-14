@@ -6,7 +6,7 @@ button{
     height:25px;
 }
 .error{
-    background-color: black;
     color: red;
-    font-size: 12px;
+    font-size: 15px;
+    margin-left: 5px;
 }
