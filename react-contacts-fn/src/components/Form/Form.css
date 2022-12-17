@@ -1,0 +1,23 @@
+.contact-form {
+    display: flex;
+}
+
+.save-btn {
+    background-color: seagreen;
+    color: white;
+    font-size: 18px;
+    margin-top: 15px;
+    text-align: center;
+    cursor: pointer;
+    height: 33px;
+}
+
+input {
+    font-size: 25px;
+    background-color: white;
+    color: #191a1c;
+    text-align: center;
+    width: 296px;
+    border: 1px solid #191a1c;
+    margin-top: 15px;
+}

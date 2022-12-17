@@ -1,0 +1,17 @@
+.head{
+    display: flex;
+}
+.container{
+    font-size: 25px;
+    color: #191a1c;
+    width: 302px;
+    text-align: center;
+    justify-content: space-between;
+}
+.container-actions{
+    font-size: 25px;
+    color: #191a1c;
+    width:50px;
+    text-align: right;
+    justify-content: space-between;
+}
