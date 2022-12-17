@@ -11,6 +11,9 @@
     cursor: pointer;
     height: 33px;
 }
+.save-btn:hover {
+    background-color: #01ffa2;
+}
 
 input {
     font-size: 25px;
@@ -20,4 +23,5 @@ input {
     width: 296px;
     border: 1px solid #191a1c;
     margin-top: 15px;
+    margin-bottom: 25px;
 }

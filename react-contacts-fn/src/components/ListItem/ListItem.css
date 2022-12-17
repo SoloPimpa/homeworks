@@ -5,8 +5,12 @@ body {
     box-sizing: border-box;
 }
 .delete-btn{
+    background-color: grey;
+    height: 35px;
+    cursor: pointer;
+}
+.delete-btn:hover{
     background-color: coral;
-    height: 50px;
 }
 .task-item{
     font-size: 25px;
@@ -26,4 +30,17 @@ body {
 }
 .contact-item{
     display: flex;
+    align-content: center;
+}
+.btn-edit{
+    background-color: #191a1c;
+    color: white;
+    font-size: 13px;
+    width: 50px;
+    height: 35px;
+    text-align: center;
+    cursor: pointer;
+}
+.btn-edit:hover {
+    background-color: seagreen;
 }

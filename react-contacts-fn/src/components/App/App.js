@@ -5,7 +5,6 @@ import Header from "../Header/Header";
 import {useEffect, useState} from "react";
 import {createItem, getContacts, removeItem, updateContact} from "../../services/serviceContacts";
 
-
 function App() {
     const [contacts, setContacts] = useState([]);
 
