@@ -1,7 +1,7 @@
 import React from 'react';
 import "./ListItem.css";
 
-function ListItem({ contact, onDelete}) {
+function ListItem({ contact, onDelete, onEdit}) {
 
     return (
         <div className="contact-item">
@@ -10,6 +10,7 @@ function ListItem({ contact, onDelete}) {
             <div className="task-item-email">{ contact.email}</div>
             <div>
                 <button className="delete-btn" onClick={()=> {onDelete(contact.id)}}>Х</button>
+                <button className="btn-edit" onClick={()=> {onEdit(contact.id)}}>edit</button>
             </div>
         </div>
     )}

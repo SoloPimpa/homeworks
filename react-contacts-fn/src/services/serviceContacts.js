@@ -4,15 +4,15 @@ export function getContacts(){
     return fetch(API_URL).then((res) => res.json());
 }
 
-// export function updateItem(updatedItem){
-//     return fetch(API_URL + updatedItem.id,{
-//         method: 'PUT',
-//         body: JSON.stringify(updatedItem),
-//         headers:{
-//             'Content-Type': 'application/json',
-//         },
-//     }).then((res) => res.json());
-// }
+export function updateContact(updatedContact){
+    return fetch(API_URL + updatedContact.id,{
+        method: 'PUT',
+        body: JSON.stringify(updatedContact),
+        headers:{
+            'Content-Type': 'application/json',
+        },
+    }).then((res) => res.json());
+}
 
 export function removeItem(id){
     return fetch(API_URL + id,{
