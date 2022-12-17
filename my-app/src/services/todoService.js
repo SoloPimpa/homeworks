@@ -20,13 +20,12 @@ export function createTodo(newTodo) {
     }).then(res => res.json());
 }
 
-export function toggleTodo(id) {
-    let isDone = {isDone:true};
-    return fetch(TODO_URL + id, {
+export function toggleTodo(updated){
+    return fetch(TODO_URL + updated.id,{
         method: 'PUT',
-        body: JSON.stringify(isDone),
-        headers: {
+        body: JSON.stringify(updated),
+        headers:{
             'Content-Type': 'application/json',
         },
-    }).then(res => res.json());
+    }).then((res) => res.json());
 }

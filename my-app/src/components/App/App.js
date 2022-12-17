@@ -12,15 +12,16 @@ class App extends Component {
     };
 
     toggleTodo =(id)=>{
-        toggleTodo(id).then(()=>{
+
+        const todo = this.state.todos.find((item) => item.id === id);
+
+        toggleTodo({...todo, isDone: !todo.isDone}).then((data)=> {
             this.setState({
-                todos: this.state.todos.map((item) => item.id !==id ? item : {
-                    ...item,
-                    isDone: !item.isDone,
-                })
+                todos: this.state.todos.map((item) => item.id === id ? data : item),
             })
         })
     }
+
 
     deleteTodo =(id)=>{
         deleteTodo(id).then(()=>{
