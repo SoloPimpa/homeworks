@@ -3,7 +3,7 @@
 import List from "../List/List";
 import Form from "../Form/Form";
 import {useEffect, useState} from "react";
-import {getList, updateItem} from "../../services/todosService";
+import {createItem, getList, removeItem, updateItem} from "../../services/todosService";
 
 function App() {
     const [list, setList]=useState([]);
@@ -20,11 +20,20 @@ function App() {
         });
 
     }
+    function deleteTodo(id){
+        removeItem(id).then(()=>{
+            setList(list.filter((item) => item.id !== id))
+        });
+    }
+
+    function saveTodo(newTodo){
+        createItem({...newTodo, isDone: false}).then((data) => setList([...list, data]));
+    }
 
     return (
         <div className="container">
-            <List todos={list} onToggle={toggleTodo}/>
-            <Form/>
+            <List todos={list} onToggle={toggleTodo} onDelete={deleteTodo}/>
+            <Form onSave={saveTodo}/>
         </div>
     );
 }

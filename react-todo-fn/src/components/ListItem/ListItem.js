@@ -1,6 +1,6 @@
 import React from "react";
 import "./ListItem.css";
-function ListItem({todo, onToggle}) {
+function ListItem({todo, onToggle, onDelete}) {
 
     return (
         <div
@@ -8,7 +8,10 @@ function ListItem({todo, onToggle}) {
             onClick={()=> onToggle(todo.id)}
         >
             {todo.title}
-            <span className="delete-btn">x</span>
+            <span className="delete-btn" onClick={(e)=> {
+                e.stopPropagation();
+                onDelete(todo.id);
+            }}>x</span>
         </div>
     );
 }

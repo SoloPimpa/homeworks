@@ -2,12 +2,22 @@ import React from "react";
 import "./Form.css";
 
 
-function Form() {
+function Form({onSave}) {
+
+    function onFormSubmit(e){
+        e.preventDefault();
+
+     onSave({
+         title:e.target.title.value
+     });
+        e.target.reset();
+    }
+
     return (
-        <form>
+        <form onSubmit={onFormSubmit}>
             <div className="list">
                 <div className="input-container">
-                    <input type="text" className="u-full-width"/>
+                    <input type="text" className="u-full-width" name="title"/>
                 </div>
 
                 <div className="btn-container">
