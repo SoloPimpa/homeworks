@@ -7,7 +7,6 @@ body {
 .delete-btn{
     background-color: coral;
     height: 50px;
-    margin-left: 20px;
 }
 .task-item{
     font-size: 25px;
@@ -22,7 +21,7 @@ body {
     background-color: white;
     color: #191a1c;
     text-align: center;
-    width: 400px;
+    width: 330px;
     border: 1px solid #191a1c;
 }
 .contact-item{
