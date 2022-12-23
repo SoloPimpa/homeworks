@@ -1,15 +1,21 @@
 import AlbumsList from "./AlbumsList";
 import PhotosList from "./PhotosList";
 import useGallery from "../hooks/useGallery";
+import React from "react";
+import { Outlet } from 'react-router-dom';
 
 function Gallery() {
-const {photos, albums, getAlbumPhotos} = useGallery();
-
     return (
         <div className="row">
-        <AlbumsList list={albums} onNavigate={getAlbumPhotos}/>
-            <PhotosList list={photos}/>
-        </div>
+            <div className="three columns">
+                <AlbumsList/>
+            </div>
+
+            <div className="nine columns">
+                <Outlet/>
+            </div>
+
+       </div>
     )
 }
 

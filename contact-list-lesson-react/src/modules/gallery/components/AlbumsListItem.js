@@ -1,9 +1,10 @@
 import React from 'react';
+import {NavLink} from "react-router-dom";
 
-function AlbumsListItem({album: {id, title}, onNavigate}) {
+function AlbumsListItem({album: {id, title}}) {
 
     return (
-<li onClick={()=> onNavigate(id)}>{title}</li>
+<NavLink to={'/gallery/' + id}>{title}</NavLink>
     )
 }
 

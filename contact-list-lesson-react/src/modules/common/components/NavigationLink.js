@@ -1,9 +1,11 @@
 import React from 'react';
+import {NavLink} from "react-router-dom";
 
 function NavigationLink ({path, navigate, label, currentPath}) {
     return (
 
-            <div className={"three columns navigation-link" + (currentPath === path ? ' active' : '')} onClick={()=> navigate(path)}>{label}</div>
+            <div className="three columns navigation-link">
+                <NavLink to={path}>{label}</NavLink></div>
 
 
     );

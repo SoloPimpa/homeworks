@@ -3,13 +3,9 @@ import PhotosListItem from "./PhotosListItem";
 
 function PhotosList({list}) {
 
-    return (
-        <div className="nine columns">
-            {list.map((item) => (
+    return list.map((item) => (
                 <PhotosListItem key={item.id} photo={item}/>
-            ))}
-        </div>
-    )
+            ))
 }
 
 export default PhotosList;

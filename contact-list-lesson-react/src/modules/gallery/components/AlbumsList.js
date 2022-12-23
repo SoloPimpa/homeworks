@@ -1,16 +1,18 @@
 import React from 'react';
 import AlbumsListItem from "./AlbumsListItem";
+import useAlbums from "../hooks/useAlbums";
 
-function AlbumsList({list, onNavigate}) {
+function AlbumsList() {
+
+    const albums = useAlbums();
 
     return (
-        <div className="three columns">
+
             <ul>
-                {list.map((item)=>(
-                    <AlbumsListItem key={item.id} album = {item} onNavigate={onNavigate}/>
+                {albums.map((item)=>(
+                    <AlbumsListItem key={item.id} album = {item} onNavigate={()=>{}}/>
                 ))}
             </ul>
-        </div>
     )
 }
 
