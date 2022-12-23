@@ -7,6 +7,7 @@ function Navigation ({page, navigate}) {
             <div className="row navigation">
               <NavigationLink path="posts" label="Posts" currentPath={page} navigate={navigate}/>
                 <NavigationLink path="users" label="Users" currentPath={page} navigate={navigate}/>
+                <NavigationLink path="gallery" label="Gallery" currentPath={page} navigate={navigate}/>
             </div>
         );
 }

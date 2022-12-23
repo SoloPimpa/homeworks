@@ -1,0 +1,13 @@
+.navigation {
+    border-bottom: 1px solid white;
+    display: flex;
+    justify-content: space-around;
+}
+
+.navigation-link {
+    cursor: pointer;
+}
+
+.navigation-link.active {
+    background-color: darkcyan;
+}

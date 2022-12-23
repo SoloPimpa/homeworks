@@ -19,21 +19,6 @@ function UsersForm({onSave, currentUser}) {
         form.current.reset();
     }
 
-    // function onFormSubmit (e){
-    //     e.preventDefault();
-    //
-    //     const form = e.target.elements;
-    //
-    //     onSave({
-    //         id: form.id.value,
-    //         name: form.name.value,
-    //         surname: form.surname.value,
-    //         email: form.email.value,
-    //     });
-    //
-    //     e.target.reset();
-    // }
-
     return (
         <form className="row" ref={formRef}>
 
