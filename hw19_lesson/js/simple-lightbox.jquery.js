@@ -1430,7 +1430,7 @@ var SimpleLightbox = /*#__PURE__*/function () {
       return this;
     }
 
-    // api
+    // axiosOrder
   }, {
     key: "open",
     value: function open(elem) {

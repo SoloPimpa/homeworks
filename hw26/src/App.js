@@ -1,58 +1,33 @@
-import React, {useEffect, useState} from 'react';
-import "./App.css";
-import Header from "./components/Header";
-import AddContact from "./components/AddContact";
-import ContactList from "./components/ContactList";
-import {v4 as uuid} from 'uuid';
-import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
-import ContactDetail from './components/ContactDetail';
-import ContactDeleteConfirm from './components/ContactDeleteConfirm'
-import EditContact from "./components/EditContact";
-
+import './App.css';
+import "../node_modules/bootstrap/dist/css/bootstrap.css";
+import Home from "./component/pages/Home";
+import About from "./component/pages/About";
+import Contacts from "./component/pages/Contacts";
+import Navbar from "./component/layout/Navbar";
+import PageNotFound from "./component/pages/PageNotFound";
+import {BrowserRouter as Router, Navigate, Route, Routes} from "react-router-dom";
+import AddUser from "./component/users/AddUser";
+import EditUser from "./component/users/EditUser";
+import User from "./component/users/User";
 
 function App() {
-  const LOCAL_STORAGE_KEY = "contacts";
-  const [contacts, setContacts] = useState([]);
-
-  const addContactHandler = (contact) => {
-    setContacts([...contacts, {id: uuid(), ...contact}]);
-  };
-
-  useEffect(() => {
-    const retriveContacts = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY))
-    if(retriveContacts) setContacts(retriveContacts)
-  }, [])
-
-  useEffect(() => {
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(contacts));
-  }, [contacts])
-
-  const removeCotnactHandler = (id) => {
-    const newContactList = contacts.filter((contact)=> {
-      return contact.id !== id;
-    });
-
-    setContacts(newContactList);
-  }
-
-  return (
-      <div className="ui container">
+    return (
         <Router>
-          <Header />
-          <Routes>
-            <Route path="/" exact element={<ContactList/>}/>
-            <Route path="/add" element={<AddContact/>}/>
-            <Route path="/edit" element={<EditContact/>}/>
-            <Route path="/contact/:id" element={<ContactDetail/>}/>
-            {/*<Route path="/deleteContactConfirm/:id" render={(props) => (<ContactDeleteConfirm {...props} removeContact={removeCotnactHandler} />)}/>*/}
-          </Routes>
-
-
-
+            <div className="App">
+                <Navbar/>
+                <Routes>
+                    <Route path="/" element={<Navigate to="Contacts"/>}/>
+                    <Route exact path="/home" element={<Home/>}/>
+                    <Route exact path="/about" element={<About/>}/>
+                    <Route exact path="/contacts" element={<Contacts/>}/>
+                    <Route exact path="/user/add" element={<AddUser/>}/>
+                    <Route exact path="/user/edit/:id" element={<EditUser/>}/>
+                    <Route exact path="/user/:id" element={<User/>}/>
+                    <Route exact path="*" element={<PageNotFound/>}/>
+                </Routes>
+            </div>
         </Router>
-
-      </div>
-  );
+    );
 }
 
 export default App;
