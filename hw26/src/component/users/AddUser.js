@@ -4,7 +4,7 @@ import axios from "axios";
 import {useNavigate} from "react-router-dom";
 
 const AddUser = () => {
-    let navigate = useNavigate();
+    const history = useNavigate();
 const [user, setUser] = useState({
     name:"",
     username:"",
@@ -18,7 +18,7 @@ const onInputChange = e =>{
 const onSubmit = async e =>{
     e.preventDefault();
     await axios.post("http://localhost:3001/users", user);
-    navigate.push("/");
+    history.push("/");
 }
     return (
         <div className="container-md">
