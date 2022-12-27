@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import axios from "axios";
 import {Link} from "react-router-dom";
 
-
 const Home = () => {
 const [users, setUsers] = useState([]);
 useEffect(()=>{
@@ -38,8 +37,8 @@ const onDelete = async id =>{
                     <td>{user.username}</td>
                     <td>{user.email}</td>
                     <td>
-                        <Link className="btn" ><i className="fa-solid fa-eye m-2"></i></Link>
-                        <Link className="btn btn-outline-dark m-2">Edit</Link>
+                        <Link className="btn" to="/user"><i className="fa-solid fa-eye m-2"></i></Link>
+                        <Link className="btn btn-outline-dark m-2" to="/user/edit">Edit</Link>
                         <Link className="btn btn-danger m-2" onClick={()=> onDelete(user.id)}>Delete</Link>
                     </td>
                 </tr>

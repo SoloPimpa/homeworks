@@ -21,7 +21,7 @@ const User =()=>{
 
     return(
 <div className="container py-4">
-    <Link className="btn btn-primary">Back home</Link>
+    <Link className="btn btn-dark" to="/home">Back to home page</Link>
     <h1 className="display-4">User</h1>
     <hr/>
     <ul className="list-group w-50">
@@ -29,6 +29,7 @@ const User =()=>{
         <li className="list-group-item">surname:{user.username}</li>
         <li className="list-group-item">email:{user.email}</li>
     </ul>
+
 </div>
     );
 }
