@@ -1,11 +1,12 @@
 import React from 'react';
 import useUsersList from "../hooks/useUsersList";
 import {Paper, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, Button} from "@mui/material";
+import {NavLink} from "react-router-dom";
 
 function UsersList() {
     const {list, deleteUser} = useUsersList();
     return (
-        <TableContainer component={Paper}>
+        <TableContainer component={Paper} sx={{marginTop:'20px'}}>
             <Table aria-label="caption table">
                 <TableHead>
                     <TableRow>
@@ -21,7 +22,7 @@ function UsersList() {
                             <TableCell>{item.name}</TableCell>
                             <TableCell align="right">{item.surname}</TableCell>
                             <TableCell align="right">{item.email}</TableCell>
-                            <TableCell align="right"><Button variant="outlined">Edit</Button><Button variant="outlined" color="error" onClick={()=>deleteUser(item.id)}>Delete</Button></TableCell>
+                            <TableCell align="right"><Button variant="outlined" to={item.id} component={NavLink}>Edit</Button><Button variant="outlined" color="error" onClick={()=>deleteUser(item.id)}>Delete</Button></TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
