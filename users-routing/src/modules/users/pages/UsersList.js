@@ -6,9 +6,9 @@ import {NavLink} from "react-router-dom";
 function UsersList() {
     const {list, deleteUser, isLoading} = useUsersList();
     return (
-        <TableContainer component={Paper} sx={{marginTop:'20px'}}>
-            {isLoading ? ('Loading...') :(
+        isLoading ? ('Loading...') :(
                 <>
+        <TableContainer component={Paper} sx={{marginTop:'20px'}}>
             <Table aria-label="caption table">
                 <TableHead>
                     <TableRow>
@@ -29,9 +29,9 @@ function UsersList() {
                     ))}
                 </TableBody>
             </Table>
-                </>
-            )}
         </TableContainer>
+                </>
+            )
     );
 }
 
