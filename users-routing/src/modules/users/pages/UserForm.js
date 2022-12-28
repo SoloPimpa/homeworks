@@ -15,9 +15,11 @@ function UserForm () {
             [e.target.name]: e.target.value
         })
         if (message.trim().length !== 0) {
+           //.setAttribute('disabled', true);
             console.log('input value is NOT empty');
         } else {
             console.log('input value is empty');
+            //.removeAttribute('disabled');
         }
     }
 
@@ -32,7 +34,7 @@ function UserForm () {
                 <TextField name="name" label="Name" variant="outlined" fullWidth value={user.name} onChange={onInputChange}></TextField>
                 <TextField name="surname" label="Surname" variant="outlined" fullWidth value={user.surname} onChange={onInputChange}></TextField>
                 <TextField name="email" label="Email" type="email" variant="outlined" fullWidth value={user.email} onChange={onInputChange}></TextField>
-                    <Button type="submit" color='primary' variant="contained" name="save" disabled={!message}>Save</Button>
+                    <Button type="submit" color='primary' variant="contained" disabled={!message}>Save</Button>
                     <Button to=".." component={NavLink}>Cancel</Button>
                 </form>
             </Paper>
