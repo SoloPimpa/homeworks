@@ -1,4 +1,4 @@
-import {DELETE_TODO, TOGGLE_TODO} from "../actions/todos";
+import {ADD_TODO, DELETE_TODO, TOGGLE_TODO} from "../actions/todos";
 
 const INITIAL_STATE = {
     list: [
@@ -10,14 +10,19 @@ const INITIAL_STATE = {
     ],
 };
 
-
-
 export default function (state = INITIAL_STATE, {type, payload}){
     switch (type){
         case DELETE_TODO:
             return {...state, list: state.list.filter((item) => payload !== item.id)};
         case TOGGLE_TODO:
             return {...state, list: state.list.map((item) => payload !== item.id ? item: {...item, isDone: !item.isDone})};
+        case ADD_TODO:{
+            const {id, title} = payload;
+            return {  list:[
+                    ...state.list,
+                    {title, isDone:false, id}
+                ]}
+        }
         default:
             return state;
     }

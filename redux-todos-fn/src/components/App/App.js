@@ -1,24 +1,7 @@
-// import './App.css';
-
 import List from "../List/List";
 import Form from "../Form/Form";
 
 function App() {
-
-    //    function toggleTodo(id){
-    //         setList(list.map((item) => item.id === id ? {...item, isDone: !item.isDone} : item));
-    //
-    // }
-    // function deleteTodo(id){
-    //     setList(list.filter((item) => item.id !== id));
-    // }
-    //
-    // function saveTodo(newTodo){
-    //        setList([...list, {
-    //            id: Date.now(), ...newTodo, isDone: false
-    //        }])
-    //    }
-
     return (
         <div className="container">
             <List/>
