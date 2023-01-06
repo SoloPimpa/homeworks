@@ -17,9 +17,7 @@ export default function useUser(id) {
         }
     }, [id]);
 
-    function changeUser(diff) {
-        setUser({...user, ...diff});
-    }
+
 
     function saveUser(user) {
         if (user.id) {
@@ -39,7 +37,6 @@ export default function useUser(id) {
 
     return {
         user,
-        changeUser,
         saveUser,
     }
 }
