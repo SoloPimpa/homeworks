@@ -1,6 +1,7 @@
-import {ADD_TODO, DELETE_TODO, TOGGLE_TODO, SET_TODOS} from "../actions/todos";
+import {ADD_TODO, DELETE_TODO, UPDATE_TODO, SET_TODOS, SET_IS_LOADING} from "../actions/todos";
 
 const INITIAL_STATE = {
+    isLoading: false,
     list: [
         {id: 1, title: 'Item 1', isDone: true},
         {id: 2, title: 'Item 2', isDone: false},
@@ -12,19 +13,21 @@ const INITIAL_STATE = {
 
 export default function (state = INITIAL_STATE, {type, payload}) {
     switch (type) {
+        case SET_IS_LOADING: return {...state, isLoading: payload};
         case DELETE_TODO:
             return {...state, list: state.list.filter((item) => payload !== item.id)};
-        case TOGGLE_TODO:
-            return {
-                ...state,
-                list: state.list.map((item) => payload !== item.id ? item : {...item, isDone: !item.isDone}
-                ),
-            };
+
+        case UPDATE_TODO: return {
+            ...state,
+            list: state.list.map((item)=>
+            item.id === payload.id ? payload : item),
+        }
 
         case ADD_TODO:
             return {
                 ...state, list: [
-                    ...state.list, {id: Date.now(), ...payload, isDone: false},
+                    ...state.list,
+                    payload
                 ],
             };
         case SET_TODOS:

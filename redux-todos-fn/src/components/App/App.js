@@ -1,21 +1,19 @@
 import List from "../List/List";
 import Form from "../Form/Form";
-import {useEffect} from "react";
-import api from '../../api';
-import {setTodos} from "../../store/actions/todos";
-import {useDispatch} from "react-redux";
+import {useSelector} from "react-redux";
+import {selectIsLoading} from "../../store/selectors/todos";
 
 function App() {
-    const dispatch = useDispatch();
 
-    useEffect(()=>{
-        api.get('todos').then(({data})=> dispatch(setTodos(data)));
-    }, []);
-
+const isLoading = useSelector(selectIsLoading);
     return (
         <div className="container">
-            <List/>
+            {isLoading ?( 'Loading ...'):
+                (
+                    <>
+                    <List/>
             <Form/>
+                    </>)}
         </div>
     );
 }
