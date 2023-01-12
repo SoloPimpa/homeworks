@@ -1,10 +1,16 @@
 import api from '../../api';
 
-export const SET_IS_LOADING = 'SET_IS_LOADING';
-
-export function setIsLoading(payload) {
-    return {type: SET_IS_LOADING, payload};
+function createAction(type){
+    return(payload)=> ({type, payload});
 }
+export const SET_IS_LOADING = 'SET_IS_LOADING';
+export const setIsLoading = createAction(SET_IS_LOADING);
+// export function setIsLoading(payload) {
+//     return {type: SET_IS_LOADING, payload};
+// }
+
+export const UPDATE_TODO = 'UPDATE_TODO';
+export const updateTodo = createAction(UPDATE_TODO);
 
 export const DELETE_TODO = 'DELETE_TODO';
 
@@ -12,11 +18,6 @@ export function deleteTodo(id) {
     return (dispatch)=>{
         api.delete('todos/' + id). then(() => dispatch({type: DELETE_TODO, payload: id}));
     };
-}
-
-export const UPDATE_TODO = 'UPDATE_TODO';
-function updateTodo(payload){
-    return {type: UPDATE_TODO, payload}
 }
 export function toggleTodo(id) {
     return (dispatch, getState)=>{
@@ -43,7 +44,6 @@ export function addTodo(newTodo) {
 }
 
 export const SET_TODOS = 'SET_TODOS';
-
 export function setTodos(payload) {
     return {type: SET_TODOS, payload}
 }
