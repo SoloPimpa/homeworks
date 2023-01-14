@@ -12,8 +12,6 @@ export default function useUser(id) {
     useEffect(() => {
         if (isNaN(id)) {
             setUser(EMPTY_USER);
-        } else {
-            api.get('users/' + id).then(({data}) => setUser(data));
         }
     }, [id]);
 

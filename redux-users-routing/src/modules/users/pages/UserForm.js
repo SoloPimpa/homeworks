@@ -1,23 +1,23 @@
-import {Button, Paper, TextField} from "@mui/material";
+import {Button, Paper} from "@mui/material";
 import useUser from "../hooks/useUser";
 import {NavLink, useParams, useNavigate} from "react-router-dom";
-// import {useEffect, useState} from "react";
-// import useForm from "../../common/hooks/useForm";
-import {Field, Form, Formik} from "formik";
+import { Form, Formik} from "formik";
 import MyTextField from "../../common/components/form/MyTextField";
+import {useDispatch} from "react-redux";
+import {addUser} from "../../../store/actions/user";
 
 const EMAIL_REGEXP =
     /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
 function UserForm() {
+    const dispatch = useDispatch();
     const {id} = useParams();
     const navigate = useNavigate();
     const {user, saveUser} = useUser(id);
 
 
     function onFormSubmit(values) {
-      saveUser(values).then(() => navigate('..'));
-
+      dispatch(addUser(values)).then(() => navigate('..'));
     }
 
     function validate(values) {
@@ -39,7 +39,6 @@ function UserForm() {
 
     }
 
-//==
     return (
         <Paper sx={{marginTop: '20px'}}>
             <Formik initialValues={user} enableReinitialize={true} onSubmit={onFormSubmit} validate={validate}

@@ -1,0 +1,36 @@
+import {ADD_USER, DELETE_USER, EDIT_USER, SET_USER} from "../actions/user"
+
+
+const INITIAL_STATE = {
+    list: []
+}
+
+export default function userReducer (state = INITIAL_STATE, {type, payload}) {
+    switch (type) {
+        case DELETE_USER:
+            return {
+                ...state,
+                list: state.list.filter((item) => payload !== item.id),
+            };
+
+        case ADD_USER: return {
+            ...state,
+            list: [...state.list, { id: Date.now(), ...payload }],
+        };
+
+        case SET_USER:
+            return {
+                ...state,
+                list:payload,
+            };
+
+        case EDIT_USER:
+            return {
+                ...state,
+                list:state.list.map((item)=>item.id === payload ? {
+                    ...item
+                }:item),
+            }
+        default : return state;
+    }
+}

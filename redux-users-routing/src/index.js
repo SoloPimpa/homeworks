@@ -9,13 +9,20 @@ import App from './App';
 import theme from './theme';
 import {ThemeProvider} from "@mui/material";
 import {BrowserRouter} from "react-router-dom";
+import {Provider} from "react-redux";
+import store from './store'
+import { getUsers } from './store/actions/user';
+
+store.dispatch(getUsers());
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+    <Provider store={store}>
     <ThemeProvider theme={theme}>
         <BrowserRouter>
             <App/>
         </BrowserRouter>
     </ThemeProvider>
+    </Provider>
 );
 

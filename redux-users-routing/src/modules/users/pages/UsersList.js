@@ -1,10 +1,20 @@
-import React from 'react';
-import useUsersList from "../hooks/useUsersList";
+import React, {useEffect, useState} from 'react';
 import {Paper, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, Button} from "@mui/material";
 import {NavLink} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import selectList from "../../../store/selectors/user";
+import {deleteUser, editUser} from "../../../store/actions/user";
 
 function UsersList() {
-    const {list, deleteUser, isLoading} = useUsersList();
+    const dispatch = useDispatch();
+    const [isLoading, setIsLoading]= useState(false);
+    const users = useSelector(selectList);
+
+    useEffect(()=>{
+        setIsLoading(true);
+        setTimeout(()=> {setIsLoading(false)})
+    },[]);
+
     return (
         isLoading ? ('Loading...') :(
                 <>
@@ -19,12 +29,14 @@ function UsersList() {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {list.map(item => (
+                    {users.map(item => (
                         <TableRow key={item.id}>
                             <TableCell>{item.name}</TableCell>
                             <TableCell align="right">{item.surname}</TableCell>
                             <TableCell align="right">{item.email}</TableCell>
-                            <TableCell align="right"><Button variant="outlined" to={item.id} component={NavLink}>Edit</Button><Button variant="outlined" color="error" onClick={()=>deleteUser(item.id)}>Delete</Button></TableCell>
+                            <TableCell align="right"><Button variant="outlined" to={item.id} component={NavLink} onClick={()=>dispatch(editUser(item.id))}>Edit</Button>
+                                <Button variant="outlined" color="error" onClick={()=>dispatch(deleteUser(item.id))}>Delete</Button>
+                            </TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
