@@ -7,9 +7,11 @@ export const deleteUser = (id) => (dispatch) => {
     );
 }
 export const EDIT_USER = 'EDIT_USER';
-export const editUser = (id) => (dispatch) => {
-        api.put('users/' + id).then(() =>
-            dispatch({ type: EDIT_USER, payload:id})
+export const editUser = (id, edit_user) => (dispatch) => {
+        api.put('users/' + id, {
+...edit_user
+        }).then(({data}) =>
+            dispatch({ type: EDIT_USER, payload:data})
         );
 }
 

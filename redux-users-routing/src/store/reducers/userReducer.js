@@ -28,7 +28,7 @@ export default function userReducer (state = INITIAL_STATE, {type, payload}) {
             return {
                 ...state,
                 list:state.list.map((item)=>item.id === payload ? {
-                    ...item
+                    ...item.id
                 }:item),
             }
         default : return state;
