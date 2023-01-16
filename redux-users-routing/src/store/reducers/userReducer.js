@@ -27,9 +27,7 @@ export default function userReducer (state = INITIAL_STATE, {type, payload}) {
         case EDIT_USER:
             return {
                 ...state,
-                list:state.list.map((item)=>item.id === payload ? {
-                    ...item.id
-                }:item),
+                list: [...state.list.map((id) => payload === id)],
             }
         default : return state;
     }
