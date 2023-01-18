@@ -13,8 +13,8 @@ function Landing() {
             alignItems: 'center',
         }}>
           {/*{JSON.stringify(user)}*/}
-            <Button component={NavLink} to="/auth">Login</Button>
-            <Button component={NavLink} to="/admin">Admin Panel</Button>
+            <Button component={NavLink} to="/auth" size="large" variant="outlined" sx={{mt: 3, mb: 2}}>Login</Button>
+            <Button component={NavLink} to="/admin" size="large">Admin Panel</Button>
         </Box>
     );
 }
