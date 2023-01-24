@@ -20,15 +20,30 @@ import MyTextField from '../../form/MyTextField';
 import { Navigate } from 'react-router-dom';
 import loginValidationSchema from '../validation/loginValidationSchema';
 import useAuth from '../hooks/useAuth';
+import api from '../../../../api';
 
-const initialValues = { username: '', password: '', role: 'admin' };
+const initialValues = { username: '', password: ''};
 
 function Login() {
     const auth = useAuth();
 
-    function onSubmit(values) {
-        console.log('submiting', values);
-        auth.login(values.username, values.password, values.role);
+    function onSubmit(values, meta) {
+        console.log('submiting', values, meta);
+        auth.login(values.username, values.password).catch((error)=>{
+            if(error.response.status >= 400 && error.response.status < 500) {
+                meta.setErrors({
+                    password: error.response.data.error,
+                });
+            }
+        });
+    }
+
+    function simulateError(){
+        api.get('error',{
+            headers: {
+                Authorization:'Bearer 123'
+            }
+        });
     }
 
     return (
@@ -68,10 +83,10 @@ function Login() {
                             label="Password"
                             type="password"
                         />
-                        <MySelect name="role" fullWidth label="Role" id="role">
-                            <MenuItem value="admin">Admin</MenuItem>
-                            <MenuItem value="user">User</MenuItem>
-                        </MySelect>
+                        {/*<MySelect name="role" fullWidth label="Role" id="role">*/}
+                        {/*    <MenuItem value="admin">Admin</MenuItem>*/}
+                        {/*    <MenuItem value="user">User</MenuItem>*/}
+                        {/*</MySelect>*/}
                         <Button
                             type="submit"
                             fullWidth
@@ -79,6 +94,14 @@ function Login() {
                             sx={{ mt: 3, mb: 2 }}
                         >
                             Sign In
+                        </Button>
+                        <Button
+                            fullWidth
+                            variant="contained"
+                            sx={{ mt: 3, mb: 2 }}
+                            onClick={simulateError}
+                        >
+                            Error
                         </Button>
                     </Box>
                 </Box>

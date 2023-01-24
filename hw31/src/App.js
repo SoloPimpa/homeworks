@@ -16,6 +16,7 @@ import Signup from './modules/common/auth/pages/Signup';
 import ProductsList from "./modules/admin/products/pages/ProductsList";
 import NewProduct from "./modules/admin/products/pages/NewProduct";
 import EditCategory from "./modules/admin/categories/pages/EditCategory";
+import EditProduct from "./modules/admin/products/pages/EditProduct";
 
 function App() {
     return (
@@ -46,7 +47,7 @@ function App() {
                     <Route path="products" element={<Products/>}>
                         <Route path="" element={<ProductsList/>}>
                             <Route path="new" element={<NewProduct/>}/>
-                           {/* <Route path="edit/:id" element={<EditProduct/>}/>*/}
+                            <Route path="edit/:id" element={<EditProduct/>}/>
                         </Route>
                     </Route>
                 </Route>

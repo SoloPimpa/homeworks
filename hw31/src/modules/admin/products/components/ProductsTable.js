@@ -10,12 +10,12 @@ import {
 } from '@mui/material';
 
 import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
+// import EditIcon from '@mui/icons-material/Edit';
 import React from 'react';
 import useProducts from "../../../common/products/hooks/useProducts";
 
 function ProductsTable() {
-    const { list, removeProduct, updateProduct } = useProducts();
+    const { list, removeProduct} = useProducts();
     return (
         <TableContainer component={Paper}>
             <Table aria-label="simple table">
